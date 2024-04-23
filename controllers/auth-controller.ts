@@ -1,13 +1,15 @@
 const bcrypt = require("bcryptjs");
 const db = require('../config/config-db.js');
 import { Request, Response } from "express";
+import UserRepository from "../repositories/UserRepository";
+import { log } from "console";
 
 let auth = async (req: Request, res: Response) => {
       try {
         const {email, password} = req.body;
-        const sql = 'SELECT password FROM users WHERE email=?';
-        const values = [email];
-        const result = await db.execute(sql, values);
+        const result : any=await UserRepository.sel(email);
+        console.log(333,result)
+        console.log(password);
         if (result[0].length > 0){
           const isPasswordValid = await bcrypt.compare(password, result[0][0].password);
           if (isPasswordValid){
@@ -23,6 +25,4 @@ let auth = async (req: Request, res: Response) => {
         console.log(error);
       }
 }
-
-
 export default auth;

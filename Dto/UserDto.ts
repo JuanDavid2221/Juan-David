@@ -1,19 +1,24 @@
 class User {
     email: string;
     nombres: string;
-    apellidos: string;
+    departamento: string;
+    municipio: string;
+    direccion: string;
     telefono: string;
-    password: string
+    password: string;
     constructor(
         email: string, nombres: string,
-        apellidos: string, telefono: string,
+        departamento: string, municipio: string,
+        direccion: string, telefono: string,
         password: string
     ) {
         this.email = email;
         this.nombres = nombres;
-        this.apellidos = apellidos;
+        this.departamento = departamento;
+        this.municipio = municipio;
+        this.direccion = direccion;
         this.telefono = telefono;
-        this.password = password
+        this.password = password;
     }
 }
 

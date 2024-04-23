@@ -9,14 +9,17 @@ let register = async (req: Request, res: Response) => {
     const {
       email,
       password,
-      name,
-      lastName,
-      phoneNumber
+      nombres,
+      departamento,
+      municipio,
+      direccion,
+      telefono,
+  
     } = req.body;
 
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(password, salt);
-    const result = await UserRepository.add(new User(email, name, lastName, phoneNumber, hashedPassword));
+    const result = await UserRepository.add(new User(email, nombres,departamento,municipio,direccion,telefono ,hashedPassword));
     return res.status(201).send(
       { status: 'register ok', password_hasheado: hashedPassword }
     );
