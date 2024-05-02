@@ -1,5 +1,6 @@
 import mysql from 'mysql2';
 import dotenv from "dotenv";
+
 dotenv.config();
 
 
@@ -13,3 +14,8 @@ const db = mysql.createPool({
   });
   
 export default db.promise()
+
+// ../config/config-db.js
+const secretKey = 'peppa'; // Replace with your actual secret key
+export { secretKey };
+
