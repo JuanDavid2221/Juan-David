@@ -1,18 +1,9 @@
-import jwt from "jsonwebtoken";
-import { secretKey } from "../config/config-db"; 
+import jwt from 'jsonwebtoken';
 
-export function generateToken(nombres: string): Promise<string> {
-  return new Promise((resolve, reject) => {
-    jwt.sign({ nombres }, secretKey, { expiresIn: '1h' }, (err, token) => {
-      if (err) {
-        reject(err);
-      } else {
-        if (token) {
-          resolve(token);
-        } else {
-          reject(new Error("Token not generated")); // O puedes manejar esto según tus necesidades
-        }
-      }
-    });
-  });
-}
+
+let generateToken = (properties: any, key: any, minutes: number) => jwt.sign({
+    exp: Math.floor(Date.now() / 1000) + (minutes * 10),
+    data: properties}, key
+);
+
+export default generateToken;
