@@ -9,12 +9,16 @@ import authRouter from './routes/auth';
 dotenv.config();
 const app = express().use(bodyParser.json());
 app.use(express.urlencoded({extended: false}));
-// Usa las rutas de usuario
+
 app.use('/register', register);
+app.use('/auth', auth);
+app.use('/verytoken', verytoken)
 
 const PORT = 10101;
 
 app.listen(PORT, () => {
-  console.log(`Servidor ejecutándose en el puerto ${PORT}`);
+  console.log("Servidor ejecutándose en el puerto: ", PORT);
+}).on("error", (error) => {
+  throw new Error(error.message);
 });
 
