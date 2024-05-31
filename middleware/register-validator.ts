@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction } from 'express';
 import { check, validationResult } from 'express-validator';
 
-const validatorParams = [
+const validatorregistro = [
   check('email').isEmail().withMessage('El email debe tener @'),
   check('password').isLength({ min: 8, max: 15 }).withMessage('La contraseña debe tener entre 8 y 15 caracteres'),
   check('nombres').isLength({ min: 1, max: 255 }).withMessage('El nombre debe tener entre 1 y 255 caracteres'),
@@ -22,7 +22,7 @@ function validator(req: Request, res: Response, next: NextFunction) {
 }
 
 export {
-  validatorParams,
+  validatorregistro,
   validator
 };
 
